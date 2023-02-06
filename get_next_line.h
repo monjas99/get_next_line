@@ -1,7 +1,6 @@
-#ifndef GET_NEXT_LINE.C
-# define GET_NEXT_LINE.C
+#ifndef GET_NEXT_LINE.H
+# define GET_NEXT_LINE.H
 
-#include <unisth.h>
 #include <stdio.h>
 #include <stdlib.h>
 
