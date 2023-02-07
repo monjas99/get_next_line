@@ -1,10 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <fcntl.h>
-/* XA PODER USAR READ */
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
+#include "get_next_line.h"
 
 int main()
  {
