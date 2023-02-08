@@ -12,31 +12,43 @@
 
 #include "get_next_line.h"
 
-/* char	*ft_hola(char *buf)
+char	*ft_hola(char *buf)
 {
-	char *line;
+	char	*line;
+	static char	*rest;
+	int	i;
 
 	line = malloc(sizeof(char) * ft_strlen(buf));
-	ft_strlcpy(line, buf , ft_strlen(buf));
-	printf("%s", line);
+	rest = malloc(sizeof(char) * ft_strlen(buf));
+	i = 0;
+	while (buf[i])
+	{
+		if (buf[i] == '\n')
+		{
+			ft_strlcpy(rest, &buf[i], ft_strlen(buf));
+			break ;
+		}
+		line[i] = buf[i];
+		i++;
+	}
+	printf("%s\n", line);
+	printf("%s\n", rest);
 	free(line);
-	return (buf);
-} */
+	return (line);
+}
 
 char	*get_next_line(int fd)
 {
-	//char	*line;
 	char	*buf;
 	size_t	a;
 
-	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buf = malloc(sizeof(char) * BUFFER_SIZE);
 	if (buf == NULL)
 		return (NULL);
 	a = read(fd, buf, BUFFER_SIZE);
 	while (a != 0)
 	{
-		printf("%s", buf);
-		//ft_hola(buf);
+		ft_hola(buf);
 		if (ft_strchr(buf, '\n'))	
 			break ;
 		a = read(fd, buf, BUFFER_SIZE);

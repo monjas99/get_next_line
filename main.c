@@ -21,6 +21,6 @@ int main()
 	if (fd <= 0)
 		return (0);
 	line = get_next_line(fd);
-    return(0);
+	return(0);
 }
 
