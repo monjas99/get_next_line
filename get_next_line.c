@@ -31,8 +31,8 @@ char	*ft_hola(char *buf)
 		line[i] = buf[i];
 		i++;
 	}
-	printf("%s\n", line);
-	printf("%s\n", rest);
+	printf("%s", buf);
+	//printf("%s\n", rest);
 	free(line);
 	return (line);
 }
@@ -40,17 +40,20 @@ char	*ft_hola(char *buf)
 char	*get_next_line(int fd)
 {
 	char	*buf;
-	size_t	a;
+	int	a;
+	char	*line;
 
 	buf = malloc(sizeof(char) * BUFFER_SIZE);
+	line = malloc(sizeof(char) * 100);
 	if (buf == NULL)
 		return (NULL);
-	a = read(fd, buf, BUFFER_SIZE);
+	a = (int)read(fd, buf, BUFFER_SIZE);
 	while (a != 0)
 	{
 		ft_hola(buf);
-		if (ft_strchr(buf, '\n'))	
-			break ;
+		//if (ft_strchr(buf, '\n'))	
+		//	break ;
+		//printf("%s", buf);
 		a = read(fd, buf, BUFFER_SIZE);
 		
 	}

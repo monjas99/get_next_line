@@ -62,3 +62,38 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (0);
 }
+
+char    *ft_strjoin(char const *s1, char const *s2)
+{
+        char    *dst;
+        size_t  a;
+
+        a = (ft_strlen(s1) + ft_strlen(s2)) + 1;
+        dst = malloc(sizeof(char) * a);
+        if (dst == 0)
+                return (0);
+        ft_strlcpy(dst, s1, (ft_strlen(s1) + 1));
+        ft_strlcat(dst, s2, a);
+        return (dst);
+}
+
+size_t  ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+        size_t  i;
+        size_t  j;
+        size_t  k;
+
+        k = ft_strlen(src);
+        i = 0;
+        while (dst[i] && i < dstsize)
+                i++;
+        j = 0;
+        while (src[j] && (i + j + 1) < dstsize)
+        {
+                dst[i + j] = src[j];
+                j++;
+        }
+        if (i < dstsize)
+                dst[i + j] = '\0';
+        return (i + k);
+}
