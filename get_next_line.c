@@ -12,27 +12,24 @@
 
 #include "get_next_line.h"
 
-char	*ft_hola(char *buf)
+char	*ft_text(char *buf)
 {
 	char	*line;
-	static char	*rest;
+	char	*rest = malloc(sizeof(char) * 100);
 	int	i;
 
-	line = malloc(sizeof(char) * ft_strlen(buf));
-	rest = malloc(sizeof(char) * ft_strlen(buf));
+	//rest = malloc(sizeof(char) * ft_strlen(buf));
+	line = malloc(sizeof(char) * ft_strlen(buf) + 1);
 	i = 0;
-	while (buf[i])
+	while (buf[i] && buf[i] != '\n')
 	{
-		if (buf[i] == '\n')
-		{
-			ft_strlcpy(rest, &buf[i], ft_strlen(buf));
-			break ;
-		}
 		line[i] = buf[i];
 		i++;
 	}
-	printf("%s", buf);
-	//printf("%s\n", rest);
+	if (buf[i])
+		rest = ft_strjoin(rest, &buf[i]);
+	printf("%s", line);
+	printf("%s", rest);
 	free(line);
 	return (line);
 }
@@ -41,21 +38,18 @@ char	*get_next_line(int fd)
 {
 	char	*buf;
 	int	a;
-	char	*line;
 
-	buf = malloc(sizeof(char) * BUFFER_SIZE);
-	line = malloc(sizeof(char) * 100);
+	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buf == NULL)
 		return (NULL);
 	a = (int)read(fd, buf, BUFFER_SIZE);
 	while (a != 0)
 	{
-		ft_hola(buf);
+		ft_text(buf);
 		//if (ft_strchr(buf, '\n'))	
 		//	break ;
-		//printf("%s", buf);
-		a = read(fd, buf, BUFFER_SIZE);
-		
+		a = read(fd, buf, BUFFER_SIZE);		
 	}
+	write (1, "\n", 1);
 	return (buf);
 }
