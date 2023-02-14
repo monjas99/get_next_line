@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:03:22 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/02/07 19:22:54 by david            ###   ########.fr       */
+/*   Updated: 2023/02/14 11:38:38 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ int main()
 	fd = open("text", O_RDONLY);
 	if (fd <= 0)
 		return (0);
-	line = get_next_line(fd);
+//	while (1)
+//	{
+		line = get_next_line(fd);
+//		if (line == NULL)
+//			break ;
+//		printf("%s", line);
+//		free (line);
+//	}
 	return(0);
 }
 

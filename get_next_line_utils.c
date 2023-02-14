@@ -6,11 +6,29 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:16:46 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/02/07 20:08:05 by david            ###   ########.fr       */
+/*   Updated: 2023/02/14 12:03:00 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char    *ft_strchr(char *s)
+{
+    int i;
+    int j;
+
+    j = ft_strlen(s);
+    i = 0;
+    while (i <= j)
+    {
+        if (s[i] == '\n')
+        {
+            return ((char *)&s[i + 1]);
+        }
+        i++;
+    }
+    return (0);
+}
 
 size_t	ft_strlcpy(
 	char *dst, const char *src, size_t dstsize)
@@ -45,25 +63,7 @@ size_t	ft_strlen(const char *c)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-	int	j;
-
-	j = ft_strlen(s);
-	i = 0;
-	while (i <= j)
-	{
-		if (s[i] == (char)c)
-		{
-			return ((char *)&s[i]);
-		}
-		i++;
-	}
-	return (0);
-}
-
-char    *ft_strjoin(char const *s1, char const *s2)
+char    *ft_strjoin(char *s1, char *s2)
 {
         char    *dst;
         size_t  a;
@@ -74,6 +74,8 @@ char    *ft_strjoin(char const *s1, char const *s2)
                 return (0);
         ft_strlcpy(dst, s1, (ft_strlen(s1) + 1));
         ft_strlcat(dst, s2, a);
+//		free (s1);
+//		free (s2);
         return (dst);
 }
 

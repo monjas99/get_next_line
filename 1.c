@@ -6,13 +6,13 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:16:17 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/02/14 11:55:34 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:04:42 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*
+
 int	ft_space(char *hard)
 {
 	int	i;
@@ -23,11 +23,11 @@ int	ft_space(char *hard)
 		if (hard[i] == '\n')
 			return (i);
 		i++;
-	}char *s1, char *s2
+	}
 	return (0);
-}*/
+}
 
-/*char	*ft_text(char *buf, char *hard)
+char	*ft_text(char *buf, char *hard)
 {
 	char	*line;
 	int		i;
@@ -43,20 +43,6 @@ int	ft_space(char *hard)
 	else if (ft_strchr(hard) == 0)
 		return (0);
 	return (line);
-}*/
-
-char	*ft_void(char *hard, char *buf)
-{
-	char	*aux;
-	int		i = 0;
-	char	*x;
-
-	hard = malloc(sizeof(char) * 1);
-	x = ft_strchr(buf);
-	if (ft_strchr(buf) != 0)
-		hard = ft_strjoin(hard, x);
-	printf("%s", hard);	
-	return (aux);
 }
 
 char	*get_next_line(int fd)
@@ -64,21 +50,16 @@ char	*get_next_line(int fd)
 	char 		*line;
 	int			a;
 	char		*buf;
-	static char	*hard = "0";
-
-	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	line = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	static char	*hard;
 	
-	a = (int)read(fd, buf, BUFFER_SIZE);
-	if	(buf == NULL)
+	hard = malloc(sizeof(char) * 1);
+	if (hard == NULL)
 		return (NULL);
-	if (hard == "0")
-		line = ft_void(hard, buf);
-	/*
-	else if (hard != "0")
-	{
-
-	}*/
+	buf = malloc(sizeof(char) * BUFFER_SIZE);
+	if (buf == NULL)
+		return (NULL);
+	a = (int)read(fd, buf, BUFFER_SIZE);
+	line = ft_text(buf, hard);
 
 	return (line);
 }
