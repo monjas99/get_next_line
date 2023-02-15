@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:16:46 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/02/15 12:10:33 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:51:15 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char    *ft_strchr(char *s)
+char	*ft_strchr(char *s)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    j = ft_strlen(s);
-    i = 0;
-    while (i <= j)
-    {
-        if (s[i] == '\n')
-        {
-            return ((char *)&s[i + 1]);
-        }
-        i++;
-    }
-    return (0);
+	j = ft_strlen(s);
+	i = 0;
+	while (i <= j)
+	{
+		if (s[i] == '\n')
+		{
+			return ((char *)&s[i + 1]);
+		}
+		i++;
+	}
+	return (0);
 }
 
 size_t	ft_strlcpy(
@@ -63,38 +63,37 @@ size_t	ft_strlen(const char *c)
 	return (i);
 }
 
-char    *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-        char    *dst;
-        size_t  a;
+	char	*dst;
+	size_t	a;
 
-        a = (ft_strlen(s1) + ft_strlen(s2)) + 1;
-        dst = malloc(sizeof(char) * a);
-        if (dst == 0)
-                return (0);
-        ft_strlcpy(dst, s1, (ft_strlen(s1) + 1));
-        ft_strlcat(dst, s2, a);
-//		free (s1);
-//		free (s2);
-        return (dst);
+	a = (ft_strlen(s1) + ft_strlen(s2)) + 1;
+	dst = malloc(sizeof(char) * a);
+	if (dst == 0)
+		return (0);
+	ft_strlcpy(dst, s1, (ft_strlen(s1) + 1));
+	ft_strlcat(dst, s2, a);
+	return (dst);
 }
-size_t  ft_strlcat(char *dst, const char *src, size_t dstsize)
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-     size_t  i;
-     size_t  j;
-     size_t  k;
- 
-     k = ft_strlen(src);
-     i = 0;
-     while (dst[i] && i < dstsize)
-         i++;
-     j = 0;
-     while (src[j] && (i + j + 1) < dstsize)
-     {
-         dst[i + j] = src[j];
-         j++;
-     }
-     if (i < dstsize)
-         dst[i + j] = '\0';
-     return (i + k);
+	size_t	i;
+	size_t	j;
+	size_t	k;
+
+	k = ft_strlen(src);
+	i = 0;
+	while (dst[i] && i < dstsize)
+		i++;
+	j = 0;
+	while (src[j] && (i + j + 1) < dstsize)
+	{
+		dst[i + j] = src[j];
+		j++;
+	}
+	if (i < dstsize)
+		dst[i + j] = '\0';
+	return (i + k);
 }

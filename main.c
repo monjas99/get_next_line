@@ -6,18 +6,19 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:03:22 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/02/15 12:31:18 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:49:39 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int main()
+int	main(void)
 {	
 	int		fd;
 	char	*line;
-	int	i = 0;
-	
+	int		i;
+
+	i = 0;
 	fd = open("text", O_RDONLY);
 	if (fd <= 0)
 		return (0);
@@ -26,10 +27,9 @@ int main()
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-//		printf("%s\n", line);
+		printf("%s\n", line);
 		free (line);
 		i++;
 	}
-	return(0);
+	return (0);
 }
-
