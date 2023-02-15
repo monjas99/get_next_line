@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:16:46 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:03:00 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:10:33 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,23 @@ char    *ft_strjoin(char *s1, char *s2)
 //		free (s2);
         return (dst);
 }
-
 size_t  ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-        size_t  i;
-        size_t  j;
-        size_t  k;
-
-        k = ft_strlen(src);
-        i = 0;
-        while (dst[i] && i < dstsize)
-                i++;
-        j = 0;
-        while (src[j] && (i + j + 1) < dstsize)
-        {
-                dst[i + j] = src[j];
-                j++;
-        }
-        if (i < dstsize)
-                dst[i + j] = '\0';
-        return (i + k);
+     size_t  i;
+     size_t  j;
+     size_t  k;
+ 
+     k = ft_strlen(src);
+     i = 0;
+     while (dst[i] && i < dstsize)
+         i++;
+     j = 0;
+     while (src[j] && (i + j + 1) < dstsize)
+     {
+         dst[i + j] = src[j];
+         j++;
+     }
+     if (i < dstsize)
+         dst[i + j] = '\0';
+     return (i + k);
 }

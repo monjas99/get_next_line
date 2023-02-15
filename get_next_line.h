@@ -6,13 +6,13 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:16:31 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/02/14 09:48:59 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:51:55 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-#define BUFFER_SIZE 8
+#define BUFFER_SIZE 3 
 
 #include <stdlib.h>
 #include <stdio.h>
