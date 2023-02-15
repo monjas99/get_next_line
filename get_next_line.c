@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:16:17 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/02/15 15:04:52 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:31:23 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 //	return (line);
 //}
 
-char	*ft_aux(char *buf, char *stash)
+char	*ft_aux(char *buf, char **stash)
 {
 	char	*line;
 	char	*aux;
@@ -49,8 +49,8 @@ char	*ft_aux(char *buf, char *stash)
 	i = 0;
 	line = malloc(sizeof(char) * BUFFER_SIZE);
 	aux = ft_strchr(buf);
-	stash = malloc(sizeof(char) * ft_strlen(aux) + 1);
-	ft_strlcpy(stash, aux, ft_strlen(aux) + 1);
+	*stash = malloc(sizeof(char) * ft_strlen(aux) + 1);
+	ft_strlcpy(*stash, aux, ft_strlen(aux) + 1);
 	while (buf[i] != '\n')
 	{
 	line [i] = buf[i];
@@ -66,6 +66,8 @@ char	*get_next_line(int fd)
 	char		*buf;
 	static char	*stash = NULL;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	a = (int)read(fd, buf, BUFFER_SIZE);
 	line = malloc(sizeof(char) * 1);
@@ -79,10 +81,12 @@ char	*get_next_line(int fd)
 			line = ft_strjoin(line, buf);
 		else if (ft_strchr(buf) != 0)
 		{
-			line = ft_strjoin(line, ft_aux(buf, stash));
+			line = ft_strjoin(line, ft_aux(buf, &stash));
 			break ;
 		}
 		a = (int)read(fd, buf, BUFFER_SIZE);
 	}
+	if (a == 0)	
+		return (NULL);
 	return (line);
 }
